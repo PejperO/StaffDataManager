@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<person>
+    <personId>4</personId>
+    <firstName>Katarzyna</firstName>
+    <lastName>Wiśniewska</lastName>
+    <mobile>700111333</mobile>
+    <email>katarzyna.wisniewska@partner.pl</email>
+    <pesel>90060612345</pesel>
+    <type>EXTERNAL</type>
+</person>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<person>
+    <personId>6</personId>
+    <firstName>Piotr</firstName>
+    <lastName>Lis</lastName>
+    <mobile>600555666</mobile>
+    <email>piotr.lis@firma.pl</email>
+    <pesel>85050598765</pesel>
+    <type>INTERNAL</type>
+</person>

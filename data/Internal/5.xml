@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<person>
+    <personId>5</personId>
+    <firstName>Anna</firstName>
+    <lastName>Nowak</lastName>
+    <mobile>600333444</mobile>
+    <email>anna.nowak@firma.pl</email>
+    <pesel>82030356789</pesel>
+    <type>INTERNAL</type>
+</person>

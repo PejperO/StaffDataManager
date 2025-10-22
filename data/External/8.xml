@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<person>
+    <personId>8</personId>
+    <firstName>Agnieszka</firstName>
+    <lastName>Wójcik</lastName>
+    <mobile>700333555</mobile>
+    <email>agnieszka.wojcik@kontrakt.pl</email>
+    <pesel>92080898765</pesel>
+    <type>EXTERNAL</type>
+</person>

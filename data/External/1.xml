@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<person>
+    <personId>1</personId>
+    <firstName>John</firstName>
+    <lastName>Doe</lastName>
+    <mobile>123456789</mobile>
+    <email>John.Doe@gmail.com</email>
+    <pesel>90010112345</pesel>
+    <type>EXTERNAL</type>
+</person>

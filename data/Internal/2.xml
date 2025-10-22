@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<person>
+    <personId>2</personId>
+    <firstName>Jane</firstName>
+    <lastName>Smith</lastName>
+    <mobile>987654321</mobile>
+    <email>Jane.Smith@gmail.com</email>
+    <pesel>85050554321</pesel>
+    <type>INTERNAL</type>
+</person>

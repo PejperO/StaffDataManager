@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<person>
+    <personId>3</personId>
+    <firstName>Jan</firstName>
+    <lastName>Kowalski</lastName>
+    <mobile>600111222</mobile>
+    <email>jan.kowalski@firma.pl</email>
+    <pesel>80010112345</pesel>
+    <type>INTERNAL</type>
+</person>

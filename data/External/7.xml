@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<person>
+    <personId>7</personId>
+    <firstName>Marek</firstName>
+    <lastName>Zieliński</lastName>
+    <mobile>700222444</mobile>
+    <email>marek.zielinski@outsourcing.pl</email>
+    <pesel>91070756789</pesel>
+    <type>EXTERNAL</type>
+</person>
