@@ -1,7 +1,7 @@
 package model;
 
 public class Person {
-    private String personId;
+    private final String personId;
     private String firstName;
     private String lastName;
     private String mobile;
@@ -64,6 +64,6 @@ public class Person {
 
     @Override
     public String toString() {
-        return String.format("[%s] %s %s (%s) - %s", personId, firstName, lastName, type, email);
+        return String.format("[%s] - %s %s %s %s - (%s)", personId, firstName, lastName, email, mobile, type);
     }
 }
