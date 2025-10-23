@@ -1,7 +1,7 @@
 package repository;
 
 import model.Person;
-import model.Type;
+import model.EmployeeType;
 import util.XmlUtils;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -16,13 +16,16 @@ public class PersonRepository{
         this.baseDir = baseDir;
     }
 
-    public Optional<Person> find(String personId, String firstName, String lastName, String mobile, String pesel, Type type){
+    public Optional<Person> find(String personId, String firstName, String lastName, String mobile, String pesel, EmployeeType type){
         List<File> files = getFiles(type);
 
         for(File f : files){
             Person p = readPersonFromXml(f);
             if(p == null)
                 continue;
+
+            if(personId == null && firstName == null && lastName == null && mobile == null && pesel == null && type == null)
+                return Optional.empty();
 
             boolean match = (personId == null || personId.equals(p.getPersonId())) &&
                             (firstName == null || firstName.equalsIgnoreCase(p.getFirstName())) &&
@@ -64,7 +67,7 @@ public class PersonRepository{
     }
 
     public boolean remove(String personId){
-        for(Type t : Type.values()){
+        for(EmployeeType t : EmployeeType.values()){
             for(File f : getFiles(t)){
                 Person p = readPersonFromXml(f);
                 if(p != null && p.getPersonId().equals(personId)){
@@ -80,11 +83,11 @@ public class PersonRepository{
         create(person);
     }
 
-    private List<File> getFiles(Type type){
+    private List<File> getFiles(EmployeeType type){
         if(type == null){
             List<File> all = new ArrayList<>();
-            all.addAll(getFiles(Type.INTERNAL));
-            all.addAll(getFiles(Type.EXTERNAL));
+            all.addAll(getFiles(EmployeeType.INTERNAL));
+            all.addAll(getFiles(EmployeeType.EXTERNAL));
             return all;
         }
 
@@ -104,7 +107,7 @@ public class PersonRepository{
             String mobile = XmlUtils.getText(root, "mobile");
             String email = XmlUtils.getText(root, "email");
             String pesel = XmlUtils.getText(root, "pesel");
-            Type type = Type.valueOf(XmlUtils.getText(root, "type").toUpperCase());
+            EmployeeType type = EmployeeType.valueOf(XmlUtils.getText(root, "type").toUpperCase());
 
             return new Person(personId, firstName, lastName, mobile, email, pesel, type);
         }catch(Exception e){

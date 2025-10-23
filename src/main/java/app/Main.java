@@ -3,8 +3,8 @@ package app;
 import model.Person;
 import repository.PersonRepository;
 
-import static model.Type.INTERNAL;
-import static model.Type.EXTERNAL;
+import static model.EmployeeType.INTERNAL;
+import static model.EmployeeType.EXTERNAL;
 
 public class Main {
     public static void main(String[] args) {
@@ -13,8 +13,7 @@ public class Main {
         System.out.println("Application started.");
 
         //Add a new employee -> repo.create(person)
-        //TODO ID problem
-        Person person1 = new Person("10", "Alice", "Johnson", "987654321", "alice.johnson@gmail.com", "85050567890", INTERNAL);
+        Person person1 = new Person( "Alice", "Johnson", "987654321", "alice.johnson@gmail.com", "85050567890", INTERNAL);
         repo.create(person1);
         System.out.println("Person " + person1 + " created.");
 
@@ -23,7 +22,7 @@ public class Main {
                 .ifPresent(person -> System.out.println("Found: " + person));
 
         //Change employee details -> person.setX(details); repo.modify(person);
-        repo.find("10", null, null, null, null, null)
+        repo.find(null, null, "Johnson", null, null, null)
                 .ifPresent(person -> {
                     person.setEmail("different.email@gmail.com");
                     repo.modify(person);
@@ -31,7 +30,7 @@ public class Main {
                 });
 
         //Remove an employee -> repo.remove(ID);
-        repo.find("10", null, null, null, null, null)
+        repo.find(null, null, null, "987654321", null, null)
                 .ifPresent(person -> {
                     repo.remove(person.getPersonId());
                     System.out.println("Person " + person + " removed.");

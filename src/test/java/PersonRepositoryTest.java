@@ -1,5 +1,5 @@
 import model.Person;
-import model.Type;
+import model.EmployeeType;
 import repository.PersonRepository;
 
 import org.junit.jupiter.api.*;
@@ -23,17 +23,27 @@ public class PersonRepositoryTest {
     //test create and find
     @Test @Order(1)
     void testCreateAndFindPerson() {
-        Person p = new Person("1", "Jan", "Kowalski", "123456789", "jan@firma.pl", "90010112345", Type.INTERNAL);
+        Person p = new Person("1", "Jan", "Kowalski", "123456789", "jan@firma.pl", "90010112345", EmployeeType.INTERNAL);
         repo.create(p);
         Optional<Person> found = repo.find("1", null, null, null, null, null);
         Assertions.assertTrue(found.isPresent());
         Assertions.assertEquals("Jan", found.get().getFirstName());
     }
 
-    //Test modify
+    //test create and find without ID
     @Test @Order(2)
+    void testCreateAndFindPersonNoId() {
+        Person p = new Person( "Jan", "Kowalski", "123456789", "jan@firma.pl", "90010112345", EmployeeType.INTERNAL);
+        repo.create(p);
+        Optional<Person> found = repo.find(null,null, null, null, "90010112345", null);
+        Assertions.assertTrue(found.isPresent());
+        Assertions.assertEquals("Jan", found.get().getFirstName());
+    }
+
+    //Test modify
+    @Test @Order(3)
     void testModifyPerson() {
-        Person p = new Person("1", "Janusz", "Kowalski", "987654321", "janusz@firma.pl", "90010112345", Type.INTERNAL);
+        Person p = new Person("1", "Janusz", "Kowalski", "987654321", "janusz@firma.pl", "90010112345", EmployeeType.INTERNAL);
         repo.modify(p);
         Optional<Person> found = repo.find("1", null, null, null, null, null);
         Assertions.assertTrue(found.isPresent());
@@ -41,7 +51,7 @@ public class PersonRepositoryTest {
     }
 
     //Test remove
-    @Test @Order(3)
+    @Test @Order(4)
     void testRemovePerson() {
         boolean removed = repo.remove("1");
         Assertions.assertTrue(removed);

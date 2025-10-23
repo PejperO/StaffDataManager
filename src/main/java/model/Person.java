@@ -1,5 +1,7 @@
 package model;
 
+import java.util.UUID;
+
 public class Person {
     private final String personId;
     private String firstName;
@@ -7,9 +9,24 @@ public class Person {
     private String mobile;
     private String email;
     private String pesel;
-    private Type type;
+    private EmployeeType type;
 
-    public Person(String personId, String firstName, String lastName, String mobile, String email, String pesel, Type type) {
+    //New constructor -> auto-generated ID
+    public Person(String firstName, String lastName, String mobile, String email, String pesel, EmployeeType type) {
+        this.personId = generateUniqueId();
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.mobile = mobile;
+        this.email = email;
+        this.pesel = pesel;
+        this.type = type;
+    }
+
+    //Only for repository use -> existing ID
+    //Could be package-private or protected but then
+    //the repository would need to be in the same package or subclass
+    @Deprecated // Marked as deprecated to indicate it's for internal use only
+    public Person(String personId, String firstName, String lastName, String mobile, String email, String pesel, EmployeeType type) {
         this.personId = personId;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -17,6 +34,11 @@ public class Person {
         this.email = email;
         this.pesel = pesel;
         this.type = type;
+    }
+
+    //Generating a unique ID
+    private static String generateUniqueId() {
+        return UUID.randomUUID().toString();
     }
 
     // Getters
@@ -38,7 +60,7 @@ public class Person {
     public String getPesel() {
         return pesel;
     }
-    public Type getType() {
+    public EmployeeType getType() {
         return type;
     }
 
@@ -58,7 +80,7 @@ public class Person {
     public void setPesel(String pesel) {
         this.pesel = pesel;
     }
-    public void setType(Type type) {
+    public void setType(EmployeeType type) {
         this.type = type;
     }
 
